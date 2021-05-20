@@ -1,0 +1,344 @@
+.light {
+    --bg-body: var(--light-body);
+    --bg-main: var(--light-main);
+    --bg-second: var(--light-second);
+    --color-hover: var(--light-hover);
+    --color-txt: var(--light-text);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body,html {
+    height: 100%;
+    background-image: url("../images/julia-craice-EX8PJ7D7RoA-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed; 
+    display: grid;
+    place-items: center;
+    font-family: var(--font-family);
+    background-color: var(--bg-body);
+
+}
+.glass {
+    width: 500px;
+    background-color: #f0f0f0;
+    border-radius: 2rem;
+    background: radial-gradient(#fffc 0%, #fffc 19%); 
+    background-position-x: 4%;
+    background-position-y: 4%;
+    -moz-box-shadow: inset 5px 4px 1rem 0 rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: inset 5px 4px 1rem 0 rgba(0, 0, 0, 0.15);
+    box-shadow: inset 5px 4px 1rem 0 rgba(0, 0, 0, 0.15);
+    position: absolute;
+    z-index: 1;
+    overflow: hidden;
+    
+}
+:root {
+    --light-body: #f3f8fe;
+    --light-main: #f8f9f8;
+    --light-second: #12316f;
+    --light-hover: #f8f9f8;
+    --light-text: #12316f;
+
+    --blue: #558f9e;
+    --white: #fff;
+
+    --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+    --font-family: cursive;
+}
+.calendar {
+    height: 480px;
+    border-radius: 30px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    /* transform: scale(1.25); */
+}
+
+.light .calendar {
+    box-shadow: var(--shadow);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 25px;
+    font-weight: 600;
+    color: var(--color-txt);
+    padding: 10px;
+}
+
+.calendar-body {
+    padding: 10px;
+}
+
+.calendar-week-day {
+    height: 50px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    font-weight: 600;
+}
+
+.calendar-week-day div {
+    display: grid;
+    place-items: center;
+    color: var(--bg-second);
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    color: var(--color-txt);
+}
+
+.calendar-days div {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    position: relative;
+    cursor: pointer;
+    animation: to-top 1s forwards;
+    /* border-radius: 50%; */
+}
+
+.calendar-days div span {
+    position: absolute;
+}
+
+.calendar-days div:hover span {
+    transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+}
+
+.calendar-days div span:nth-child(1),
+.calendar-days div span:nth-child(3) {
+    width: 2px;
+    height: 0;
+    background-color: var(--color-txt);
+}
+
+.calendar-days div:hover span:nth-child(1),
+.calendar-days div:hover span:nth-child(3) {
+    height: 100%;
+}
+
+.calendar-days div span:nth-child(1) {
+    bottom: 0;
+    left: 0;
+}
+
+.calendar-days div span:nth-child(3) {
+    top: 0;
+    right: 0;
+}
+
+.calendar-days div span:nth-child(2),
+.calendar-days div span:nth-child(4) {
+    width: 0;
+    height: 2px;
+    background-color: var(--color-txt);
+}
+
+.calendar-days div:hover span:nth-child(2),
+.calendar-days div:hover span:nth-child(4) {
+    width: 100%;
+}
+
+.calendar-days div span:nth-child(2) {
+    top: 0;
+    left: 0;
+}
+
+.calendar-days div span:nth-child(4) {
+    bottom: 0;
+    right: 0;
+}
+
+.calendar-days div:hover span:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.calendar-days div:hover span:nth-child(3) {
+    transition-delay: 0.4s;
+}
+
+.calendar-days div:hover span:nth-child(4) {
+    transition-delay: 0.6s;
+}
+.calendar-days div.curr-date span {
+    display: none;
+}
+
+.month-picker {
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.month-picker:hover {
+    background-color: #d8b8d8;
+}
+
+.year-picker {
+    display: flex;
+    align-items: center;
+}
+
+.year-change {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.year-change:hover {
+    background-color: #d8b8d8;
+}
+
+.calendar-footer {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.toggle {
+    display: flex;
+}
+
+.toggle span {
+    margin-right: 10px;
+    color: var(--color-txt);
+}
+
+.month-list {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: var(--bg-main);
+    padding: 25px;
+    grid-template-columns: repeat(3, auto);
+    gap: 15px;
+    display: grid;
+    transform: scale(1.5);
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.month-list.show {
+    box-shadow: inset 2px 1px 15px 0 rgba(0, 0, 0, 0.5);
+    transform: scale(1);
+    visibility: visible;
+    pointer-events: visible;
+    transition: all 0.2s ease-in-out;
+}
+
+.month-list > div {
+    display: grid;
+    place-items: center;
+    background: #f2f4f8;
+    border-radius: 1rem;
+    box-shadow: -10px -10px 30px 0 #ffffff, 3px 3px 15px 0 #aeaca0;
+}
+
+.month-list > div > div {
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    color: var(--color-txt);
+}
+.month-list > div:hover {
+    background-color: #e7d1d9;
+    transition: background-color 0.2s;
+    transition-timing-function: cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+@keyframes to-top {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.calendar-day-hover:hover {
+    background-color: #d8b8d8;
+    border-radius: 2rem;
+}
+input, select {
+    border-style: none;
+    background: none;
+    font-weight: 600;
+    color: #12316f;
+    padding: 5px 10px;
+}
+.form-select:hover{
+    background-color: #d8b8d8;
+    border-radius: 10px;
+}
+.form-select {
+    overflow-y: scroll;
+}
+::-webkit-scrollbar {
+    max-height: 75px;
+}
+::-webkit-scrollbar-track {
+    background: #83b0bb80;
+}
+::-webkit-scrollbar-thumb {
+    background:#174aa87c;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #12316fc7;
+}
+.year-option:hover {
+    background:#d8b8d8;
+}
+
+.form-select:focus {
+    border-color:#d8b8d8;
+    border-radius: 10px;
+}
+.year-option {
+    background-color: #bbd8e280;
+    color: #12316f;
+    font-weight: 600;
+    opacity: 0.5;
+}
+#year {
+    background-color: #bbd8e280;
+    color: #12316f;
+    font-weight: 600;
+}
+.colors-blue{
+    color: #12316f;
+    color: #1749a8;
+    color: #20b4d8;
+    color: #20dba4;
+    color: #f8efad;
+}
+.colors-pink{
+    color: #83b0bb;
+    color: #d8b8d8;
+    color: #eee2e6;
+    color: #e0e4cb;
+    color: #f8f9f8;
+}
